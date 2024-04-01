@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload File</title>
+    <script src="cli.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-950 backdrop-brightness-50">
+
+    <div class="h-screen flex justify-center items-center">
+
+        <div class="absolute inset-0 flex items-center justify-center z-10 invisible" id="heyContainer" style="background-color: rgba(255, 255, 255, 0.5);">
+            <div class="flex flex-col items-center">
+                <h1 class="text-xl font-semibold text-gray-700" id="heretext"></h1>
+                <h1 class="text-xl font-semibold text-gray-700">please click this button when done</h1>
+                <button class="px-4 py-2 bg-gray-700 text-white rounded-lg mt-3" id="delbtn">delete all</button>
+
+            </div>
+        </div>
+      
+        <div class="w-1/2 flex flex-col items-center">
+            <div class="flex justify-center mb-6 z-20 relative">
+                <label class="relative inline-flex cursor-pointer items-center">
+                    <input type="checkbox" id="togglebox" value="" class="peer sr-only" />
+                    <div class="peer flex h-8 items-center gap-4 rounded-full bg-orange-600 px-3 after:absolute after:left-1 after: after:h-6 after:w-16 after:rounded-full after:bg-white/40 after:transition-all after:content-[''] peer-checked:bg-stone-600 peer-checked:after:translate-x-full peer-focus:outline-none dark:border-slate-600 dark:bg-slate-700 text-sm text-white">
+                      <span class="select-none">post to</span>
+                      <span class="select-none">get from</span>
+                    </div>
+                  </label>
+            </div>
+            
+            <div id="postto" class="w-full">
+                <div class="w-full"> 
+                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">                
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <div class="text-xs text-gray-500 dark:text-gray-400" id="filenamehere">
+                                <p>wtv max file size is 15mb</p>
+                                <hr class="mt-1 mb-1 border-dashed border-blue-600 border-1">
+                            </div>
+                        </div>
+                        <input id="dropzone-file" type="file" class="hidden" multiple />
+                    </label>
+                </div>
+                <div class="w-full flex justify-center mt-4">
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg" id="clicky">Submit</button>
+                </div>
+                <h1 class="text-5xl text-white mt-3" id="textgoeshere"></h1>
+            </div>  
+
+            <div id="getfrom" class="absolute  w-full invisible">
+                    <div class="mt-32 flex flex-col items-center">
+                        <div class="max-w-sm mx-auto">
+                            <div class="flex mb-2 space-x-2 rtl:space-x-reverse">
+                                <div>
+                                    <label for="code-1" class="sr-only">First code</label>
+                                    <input type="text" maxlength="1" data-focus-input-init data-focus-input-next="code-2" id="code-1" class="block w-12 h-12 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+                                </div>
+                                <div>
+                                    <label for="code-2" class="sr-only">Second code</label>
+                                    <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-1" data-focus-input-next="code-3" id="code-2" class="block w-12 h-12 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+                                </div>
+                                <div>
+                                    <label for="code-3" class="sr-only">Third code</label>
+                                    <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-2" data-focus-input-next="code-4" id="code-3" class="block w-12 h-12 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+                                </div>
+                                <div>
+                                    <label for="code-4" class="sr-only">Fourth code</label>
+                                    <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-3" id="code-4" class="block w-12 h-12 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+                                </div>
+                            </div>
+                            <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">please enter your code</p>
+                        </div>
+                        <div class="flex justify-center mt-6">
+                            <button class="px-4 py-2 bg-gray-500 text-white rounded-lg cursor-not-allowed" id="goget" disabled>go get my files</button>
+                        </div>
+                        <div class="w-fit">
+                            <hr class="w-48 h-1 mx-auto bg-gray-100 border-0 border-dotted rounded mt-3 mb-3 dark:bg-gray-700">
+                            <div class="text-gray-50 grid grid-cols-2 text-center gap-x-12 gap-y-6" id="fileshere">
+                        
+                              </div>                              
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
